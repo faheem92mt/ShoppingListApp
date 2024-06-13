@@ -1,0 +1,58 @@
+html, body {
+    margin: 0;
+    padding: 0;
+
+    /* This is to make it occupy only as much space as required
+        make it MobileApp-like
+    */
+    display: flex;
+    justify-content: center;
+    
+    font-family: 'Rubik', sans-serif;
+    background-color: #EEF0F4;
+}
+
+#wrapper {
+    border: 5px solid black;
+    border-radius: 10px;
+
+    /* This is to align the logo, input-box & button centrally */
+    text-align: center;
+
+    background-color: rgb(220, 215, 215);
+    
+    /* for mobile devices */
+    max-width: 320px;
+}
+
+#cat {
+    height: 180px;
+    margin: 15px;
+    /* border: 10px solid red; */
+}
+
+#input {
+    width: 83%;
+    text-align: center;
+
+    color: #432000;
+    background-color: #DCE1EB;
+
+    font-size: 15px;
+
+    /* border: 0; */
+    border-radius: 5px;
+}
+
+#button {
+    margin-top: 10px;
+    margin-bottom: 35px;
+    
+    height: 10%;
+    width: 87%;
+
+    border-radius: 5px;
+
+    color: rgb(244, 219, 219);
+    background-color: rgb(234, 33, 94);
+}
