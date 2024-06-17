@@ -46,9 +46,9 @@ html, body {
 
 #button {
     margin-top: 10px;
-    margin-bottom: 35px;
+    /* margin-bottom: 5px; */
     
-    height: 10%;
+    height: 40px;
     width: 87%;
 
     border-radius: 5px;
