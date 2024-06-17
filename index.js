@@ -1,7 +1,7 @@
 // importing the method uesed to initialize the app
 import {initializeApp} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 // import the 'getDatabase'
-import {getDatabase, ref, push, onValue} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import {getDatabase, ref, push, onValue, remove} from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 // defining our app settings
 const appSettings = {
@@ -19,15 +19,14 @@ const foodInDB = ref(database, "food")
 // fetching data from DB - this function runs everytime there is an edit to the database
 onValue(foodInDB, (snapshot) => {
     // converting object to array
-    let foodArray = Object.values(snapshot.val())
+    let foodArray = Object.entries(snapshot.val())
 
     // we clear existing list everytime there is an edit to the db
     clearList()
 
     for (let i = 0; i < foodArray.length; i++) {
-        const element = foodArray[i];
-        console.log(element)
-        addToList(element) 
+        let currentItem = foodArray[i];
+        addToList(currentItem)
     }
 })
 
@@ -66,11 +65,19 @@ const clearList = () => {
     ul.innerHTML = ""
 }
 
-const addToList = (inputValue) => {
+const addToList = (currentItem) => {
+
+    let currentItemId = currentItem[0]
+    let currentItemValue = currentItem[1]
 
     // creating a new 'li' and changing its value &...
     var newListItem = document.createElement('li')
-    newListItem.textContent = inputValue
+    newListItem.textContent = currentItemValue
+
+    newListItem.addEventListener("click", () => {
+        let exactLocationOfFoodItem = ref(database, `food/${currentItemId}`)
+        remove(exactLocationOfFoodItem)
+    })
 
     //...appending it
     ul.appendChild(newListItem)
